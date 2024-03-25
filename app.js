@@ -2,7 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import { c, cpp, java, python, node } from 'compile-run'
 
-const port = 3000
+const port = 3000||process.env.PORT
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))
