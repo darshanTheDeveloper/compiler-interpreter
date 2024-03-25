@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    padding: 1em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    background-image:linear-gradient(to left,rgb(177, 2, 208),blueviolet);
+    font-size: large;
+}
+
+
+header div {
+    display: flex;
+    gap: 1em;
+    padding: 0 10px;
+}
+
+header div button {
+    border: none;
+    background-color: transparent;
+    font-family: century gothic;
+    font-weight: 900;
+}
+
+.run{
+    transition: all 0.5s;
+}
+
+.run:hover{
+    transform: scale(1.4);
+    color:springgreen;
+}
+
+
+#editor {
+    width: 100%;
+    height: 100%;
+}
+
+#lang{
+    margin-right: 1em;
+    border:1px solid;
+    padding:0.5em 2em;
+    border-radius: 50vh;
+    background-color:transparent ;
+    font-family: century gothic;
+    font-weight: 900;
+}
+
+#lang:hover,#lang:active,#lang:visited{
+    border-radius: 50vh;
+    outline:none;
+}
+
+.save{
+    border:1px solid black;
+    padding:0.5em 2em;
+    border-radius: 50px;
+}
+
+.save:hover{
+   background-color: springgreen;
+}

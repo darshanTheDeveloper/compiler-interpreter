@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <title>codebox</title>
+    <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <i class="fa-solid fa-code"></i>
+        <div>
+            <form action="/output" method="post" id="run">
+                <textarea name="codeSnippet" id="code-snippet" style="display: none;"></textarea>
+                <select name="lang" id="lang" >
+                    <option value="c">c</option>
+                    <option value="c++">c++</option>
+                    <option value="java">java</option>
+                    <option value="python" selected>python</option>
+                    <option value="javascript">js</option>
+                </select>
+                <button type="submit" class="run"><i class="fa-solid fa-play"></i></button>
+            </form>
+            <button class="save">save</button>
+        </div>
+    </header>
+
+    <div id="editor">print("HelloWorld")
+    </div>
+    <script src="https://kit.fontawesome.com/e9c36797c5.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.8/ace.js"
+        integrity="sha512-u8Li+VRzprAsXVzZsUJ/BJm5fk6T4yFNFqh8t2QjiwtRopvsrTPss4rwOxsUMdksqngUgLjN6wrxD4DU9c3l7Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/dracula");
+        editor.session.setMode("ace/mode/python");
+        editor.setFontSize(14)
+
+    
+        const codeEditor = document.querySelector('#code-snippet')
+        const mode = document.querySelector('#lang')
+
+        mode.addEventListener('change',(e)=>{
+            editor.session.setMode(`ace/mode/${e.target.value}`);
+            if(e.target.value === 'java'){
+                editor.setValue(`// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("HelloWorld");
+    }
+}`)
+            }else if(e.target.value == 'c'){
+                editor.setValue(`#include <stdio.h>
+int main()
+{
+    printf("HelloWorld");
+    return 0;
+}
+`)
+            }else if(e.target.value == 'c++'){
+                editor.setValue(`// Online C++ compiler to run C++ program online
+#include <iostream>
+
+int main() {
+    // Write C++ code here
+    std::cout << "HelloWorld";
+
+    return 0;
+}`)
+            }else if(e.target.value=='javascript'){
+                editor.setValue(`// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+console.log("HelloWorld");`)
+            }else{
+                editor.setValue("print('HelloWorld')")
+            }
+        })
+
+        const save = document.querySelector('.save')
+        save.addEventListener('click', () => {
+            codeEditor.value = editor.getValue()
+        })
+    </script>
+</body>
+
+</html>
